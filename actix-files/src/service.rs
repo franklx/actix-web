@@ -119,6 +119,10 @@ impl Service<ServiceRequest> for FilesService {
             let path_on_disk =
                 match PathBufWrap::parse_path(req.match_info().unprocessed(), this.hidden_files) {
                     Ok(item) => item,
+                    | Err(crate::error::UriSegmentError::BadStart(_))
+                    | Err(crate::error::UriSegmentError::BadEnd(_)) if this.default.is_some() => {
+                        return this.default.as_ref().unwrap().call(req).await;
+                    }
                     Err(err) => return Ok(req.error_response(err)),
                 };
 

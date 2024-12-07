@@ -1,6 +1,6 @@
 [package]
 name = "actix-files"
-version = "0.6.6"
+version = "0.6.6+frk.1"
 authors = [
     "Nikolay Kim <fafhrd91@gmail.com>",
     "Rob Ede <robjtede@icloud.com>",
@@ -12,6 +12,8 @@ repository = "https://github.com/actix/actix-web"
 categories = ["asynchronous", "web-programming::http-server"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
+
+publish = ["elleci"]
 
 [lib]
 name = "actix_files"
