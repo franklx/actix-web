@@ -15,9 +15,14 @@ edition = "2021"
 
 publish = ["elleci"]
 
-[lib]
-name = "actix_files"
-path = "src/lib.rs"
+[package.metadata.cargo_check_external_types]
+allowed_external_types = [
+    "actix_http::*",
+    "actix_service::*",
+    "actix_web::*",
+    "http::*",
+    "mime::*",
+]
 
 [features]
 experimental-io-uring = ["actix-web/experimental-io-uring", "tokio-uring"]
@@ -30,7 +35,7 @@ actix-web = { version = "4", default-features = false }
 
 bitflags = "2"
 bytes = "1"
-derive_more = "0.99.5"
+derive_more = { version = "1", features = ["display", "error", "from"] }
 futures-core = { version = "0.3.17", default-features = false, features = ["alloc"] }
 http-range = "0.1.4"
 log = "0.4"
@@ -51,3 +56,6 @@ actix-test = "0.1"
 actix-web = "4"
 env_logger = "0.11"
 tempfile = "3.2"
+
+[lints]
+workspace = true

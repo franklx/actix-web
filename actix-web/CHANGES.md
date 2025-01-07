@@ -2,6 +2,30 @@
 
 ## Unreleased
 
+- On Windows, an error is now returned from `HttpServer::bind()` (or TLS variants) when binding to a socket that's already in use.
+- Update `brotli` dependency to `7`.
+- Minimum supported Rust version (MSRV) is now 1.75.
+
+## 4.9.0
+
+### Added
+
+- Add `middleware::from_fn()` helper.
+- Add `web::ThinData` extractor.
+
+## 4.8.0
+
+### Added
+
+- Add `web::Html` responder.
+- Add `HttpRequest::full_url()` method to get the complete URL of the request.
+
+### Fixed
+
+- Always remove port from return value of `ConnectionInfo::realip_remote_addr()` when handling IPv6 addresses. from the `Forwarded` header.
+- The `UrlencodedError::ContentType` variant (relevant to the `Form` extractor) now uses the 415 (Media Type Unsupported) status code in it's `ResponseError` implementation.
+- Apply `HttpServer::max_connection_rate()` setting when using rustls v0.22 or v0.23.
+
 ## 4.7.0
 
 ### Added

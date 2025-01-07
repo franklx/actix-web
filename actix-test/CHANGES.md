@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.1.5
+
+- Add `TestServerConfig::listen_address()` method.
+
 ## 0.1.4
 
 - Add `TestServerConfig::rustls_0_23()` method for Rustls v0.23 support behind new `rustls-0_23` crate feature.
